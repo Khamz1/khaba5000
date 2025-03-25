@@ -9,7 +9,7 @@ module.exports.postController = {
             return res.status(400).json({ error: 'Не заполнены обязательные поля' });
         }
         try {
-            const post = new Post({ title, text, author });
+            const post = new Post({ title, text, author, date: new Date().now().toLocaleString() });
             await post.save();
             res.status(201).json(post);
         } catch (err) {

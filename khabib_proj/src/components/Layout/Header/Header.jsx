@@ -10,7 +10,7 @@ function Header() {
         <div className={HStyle.main}>
             <Button>Создать новый пост</Button>
             <LogoIcon fill='red' />
-           <Select/>
+            <Button>Выйти из аккаунта</Button>
         </div>
         </div>
     );

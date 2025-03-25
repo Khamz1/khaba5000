@@ -1,15 +1,18 @@
-import api from './axiosConfig.js'
+import api from './axiosConfig';
 
 export const AuthAPI = {
-    login: async (email, password) => {
-        const response = await api.post('/login', {email, password})
-        return response.data
-    },
     register: async (userData) => {
-        const response = await api.post('/register',userData);
-        return response.data
+        const response = await api.post('/signUp', userData);
+        return response.data;
     },
-    logout: async ()=>{
-        await api.post('/logout')
-    }
-}
+
+    login: async (email, password) => {
+        const response = await api.post('/user/login', { email, password });
+        return response.data;
+    },
+
+    // getMe: async () => {
+    //     const response = await api.get('/user/me'); // Добавьте этот эндпоинт на бэкенде
+    //     return response.data;
+    // }
+};
