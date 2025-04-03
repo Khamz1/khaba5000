@@ -1,11 +1,10 @@
-import React from 'react';
-import SButton from './button.module.css'
+import React from "react";
+import SButton from "./button.module.css";
 
-function Button({children}) {
-    return (
-
-        <button className={SButton.button}>{children}</button>
-    );
+function Button({ children, className }) {
+  return (
+    <button className={`${SButton.button} ${className}`}>{children}</button>
+  );
 }
 
 export default Button;
