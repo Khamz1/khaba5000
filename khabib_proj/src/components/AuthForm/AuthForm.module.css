@@ -1,0 +1,26 @@
+.AuthForm {
+  background-color: #ab886d;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.formInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.input {
+  width: 100%;
+}
+
+.button{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+}
