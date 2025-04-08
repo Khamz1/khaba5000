@@ -22,6 +22,7 @@ const PostList = () => {
           post={post}
         />
       ))}
+
     </Container>
   );
 };

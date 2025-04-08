@@ -3,6 +3,7 @@ import {lazy, Suspense} from 'react'
 import {Route, Routes} from 'react-router-dom'
 import {Layout} from "./Layout.jsx";
 import {Paths} from "../../constants/routesPaths.js";
+import CreatePost from "@/components/Posts/CreatePost.jsx";
 
 
 const Posts = lazy(() => import('@/components/Posts/PostList.jsx'))
@@ -10,7 +11,8 @@ const MainPage = lazy(() => import('@/pages/Main/Main.jsx'))
 
 const routesList = [
     {key: 'main', path: Paths.MainPage, Page: MainPage},
-    {key: 'posts', path: Paths.Posts, Page: Posts}
+    {key: 'posts', path: Paths.Posts, Page: Posts},
+    {key: 'createPost', path: Paths.CreatePost, Page: CreatePost},
 ]
 
 export const Routing = ()=>{

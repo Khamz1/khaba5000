@@ -1,9 +1,9 @@
 import React from "react";
 import SButton from "./button.module.css";
 
-function Button({ children, className }) {
+function Button({ children, className, ...rest }) {
   return (
-    <button className={`${SButton.button} ${className}`}>{children}</button>
+    <button className={`${SButton.button} ${className}`} {...rest}>{children}</button>
   );
 }
 

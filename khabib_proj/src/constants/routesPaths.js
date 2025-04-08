@@ -3,4 +3,5 @@ export const Paths = {
     Profile:'/profile',
     Auth:'/auth',
     Posts:'/posts',
+    CreatePost:'/createPost',
 }
