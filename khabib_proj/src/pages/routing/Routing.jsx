@@ -6,11 +6,6 @@ import {Paths} from "../../constants/routesPaths.js";
 import CreatePost from "@/components/Posts/CreatePost.jsx";
 
 
-const Posts = lazy(() => import('@/components/Posts/PostList.jsx'))
-const MainPage = lazy(() => import('@/pages/Main/Main.jsx'))
-import {Paths} from "../../constants/routesPaths.js";
-import CreatePost from "@/components/Posts/CreatePost.jsx";
-
 
 const Posts = lazy(() => import('@/components/Posts/PostList.jsx'))
 const MainPage = lazy(() => import('@/pages/Main/Main.jsx'))
