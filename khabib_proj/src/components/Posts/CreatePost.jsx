@@ -7,6 +7,7 @@ const CreatePost = () => {
     const [text, setText] = useState('');
     const { createPost } = usePostsStore();
     const { user } = useAuthStore();
+ 
 
     const handleSubmit = async (e) => {
         e.preventDefault();

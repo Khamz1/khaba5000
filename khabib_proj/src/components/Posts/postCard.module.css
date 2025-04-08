@@ -1,0 +1,36 @@
+.PostCard {
+  background-color: #ab886d;
+  max-width: 480px;
+  border-radius: 20px;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 2.2em;
+  margin: 0;
+}
+
+.text {
+  margin-top: 50px;
+  font-size: 24px;
+  text-align: left;
+}
+
+.btn{
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
