@@ -18,7 +18,8 @@ const PostCard = ({ post }) => {
             {/*        ❤️ {post.likes?.length || 0}*/}
             {/*    </div>*/}
             {/*    <div className="comments">*/}
-            {/*        💬 {post.comments?.length || 0}*/}
+            {/*        💬 {post.comments?.length 
+            || 0}*/}
             {/*    </div>*/}
             {/*</div>*/}
         </div>
