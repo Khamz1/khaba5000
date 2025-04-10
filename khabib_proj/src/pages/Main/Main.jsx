@@ -1,11 +1,11 @@
 import React from "react";
-import { AuthForm } from "../../components/AuthForm/AuthForm";
+import { SignInForm } from "../../components/AuthForm/SignInForm.jsx";
 
 function Main() {
   return (
     <div>
       THIS IS MAIN PAGE
-      <AuthForm />
+      <SignInForm />
     </div>
   );
 }

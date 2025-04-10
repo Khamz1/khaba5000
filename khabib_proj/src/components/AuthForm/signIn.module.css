@@ -1,9 +1,8 @@
 .AuthForm {
-  background-color: #ab886d;
-  max-width: 400px;
+  background-color: black;
+  max-width: 800px;
   margin: 0 auto;
   padding: 40px;
-  border-radius: 20px;
 }
 
 .formInner {
@@ -13,14 +12,23 @@
   gap: 15px;
   width: 100%;
   margin: 0 auto;
+
 }
 
 .input {
-  width: 100%;
+ background-color: lightgray;
+ margin:auto;
 }
 
 .button{
     font-size: 20px;
     width: 100%;
     padding: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 18px;
+    justify-content: center;
 }
