@@ -5,6 +5,8 @@ export const useAuthStore = create((set) => ({
     user: null,
     token: localStorage.getItem('token') || null,
     isAuthenticated: !!localStorage.getItem('token'),
+    loading:false,
+    error:null,
 
     login: async (email, password) => {
         try {
@@ -17,18 +19,21 @@ export const useAuthStore = create((set) => ({
     },
 
     register: async (userData) => {
+        set({ loading: true });
         try {
             const { user, token } = await AuthAPI.register(userData);
             localStorage.setItem('token', token);
-            set({ user, token, isAuthenticated: true });
+            set({
+                user,
+                token,
+                isAuthenticated: true,
+                loading: false
+            });
+            return { user, token };
         } catch (error) {
+            set({ loading: false });
             throw new Error(error.response?.data?.error || 'Ошибка регистрации');
         }
-    },
-
-    logout: () => {
-        localStorage.removeItem('token');
-        set({ user: null, token: null, isAuthenticated: false });
     },
 
     fetchProfile: async () => {
@@ -36,6 +41,7 @@ export const useAuthStore = create((set) => ({
             const user = await AuthAPI.getMe();
             set({ user });
         } catch (error) {
+            console.error(error);
             localStorage.removeItem('token');
             set({ user: null, token: null, isAuthenticated: false });
         }

@@ -1,4 +1,5 @@
-import { useAuthStore } from '../store/auth.store';
+import { useAuthStore } from '../../store/auth.store.js';
+import {useState} from "react";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -29,3 +30,5 @@ const Login = () => {
         </form>
     );
 };
+
+export  default Login
