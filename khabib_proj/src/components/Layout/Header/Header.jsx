@@ -14,7 +14,7 @@ function Header() {
   return (
     <header className={HStyle.header}>
       <Container className={HStyle.main}>
-        <Button onClick={() => navigate(`${Paths.Auth}`) }>Создать новый пост</Button>
+        <Button onClick={() => navigate(`${Paths.CreatePost}`) }>Создать новый пост</Button>
         <LogoIcon fill="red" />
         <Button>Выйти из аккаунта</Button>
       </Container>

@@ -30,15 +30,19 @@ export const usePostsStore = create((set) => ({
     },
 
     createPost: async (postData) => {
-        set({ loading: true });
+        set({ loading: true, error:null});
         try {
             const newPost = await PostsAPI.createPost(postData);
             set((state) => ({
                 posts: [newPost, ...state.posts],
                 loading: false
             }));
+            return newPost
         } catch (error) {
-            set({ loading: false });
+            set({ 
+        error: error.response?.data?.error || 'Ошибка при создании поста',
+        loading: false 
+      });
             throw error;
         }
     },
