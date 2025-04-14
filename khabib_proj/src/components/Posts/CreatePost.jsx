@@ -5,11 +5,12 @@ import S from "./createPost.module.css"
 import { Container } from '../Ui/Container/Container';
 import Button from '../Ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from '../../helpers/jwtDecoder';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    const { createPost,loading } = usePostsStore();
+    const { createPost, loading } = usePostsStore();
     const { user } = useAuthStore();
     const validatePost = (title, text) => {
         if (title.length < 0) return "Пост без заголовка?"
@@ -17,6 +18,8 @@ const CreatePost = () => {
     }
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const decodedJwt = jwtDecode(localStorage.getItem("token"))
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,18 +29,18 @@ const CreatePost = () => {
             alert(validationError)
             return;
         }
-   
+
         try {
-            await createPost({ title, text });
+            await createPost({ title, text, userId: decodedJwt.userId });
             navigate('/posts')
             setTitle('');
             setText('');
             alert('Пост успешно создан)')
-            
+
         } catch (error) {
             alert(error.response?.data?.error || 'Ошибка при создании поста');
         }
-        finally{
+        finally {
             setIsSubmitting(false)
         }
     };
@@ -64,7 +67,7 @@ const CreatePost = () => {
                         required
                     />
                     <Button type="submit">
-                       Опубликовать
+                        Опубликовать
                     </Button>
                 </form>
             </div>

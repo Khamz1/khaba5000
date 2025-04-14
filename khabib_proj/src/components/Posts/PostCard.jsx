@@ -5,18 +5,13 @@ const PostCard = ({ post }) => {
   // Добавляем защиту от undefined
   const authorName = post.author?.name || "Неизвестный автор";
   const authorLastName = post.author?.lastName || "";
-  const postDate = post.data
-    ? new Date(post.data).toLocaleDateString()
-    : "Дата не указана";
+  const postDate = post.date.split('T')[0] || "Дата не указана";
 
   return (
     <div className={s.PostCard}>
       <h3 className={s.title}>{post.title}</h3>
       <p className={s.text}>
-        {post.text} Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Ipsam molestiae sit dignissimos quidem illo magni quos laborum rerum
-        iste soluta illum consectetur nisi exercitationem ut, odit culpa
-        similique hic vitae?{" "}
+        {post.text} {" "}
       </p>
 
       <div className={s.info}>

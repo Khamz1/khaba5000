@@ -11,10 +11,18 @@ function App() {
     const { isAuthenticated, fetchProfile } = useAuthStore();
 
     useEffect(() => {
-        if (isAuthenticated) {
-            fetchProfile();
-        }
-    }, [isAuthenticated, fetchProfile]);
+      const checkAuth = async () => {
+          try {
+              await fetchProfile();
+          } catch (error) {
+              console.error('Auth check failed:', error);
+          }
+      };
+      
+      if (isAuthenticated) {
+          checkAuth();
+      }
+  }, [isAuthenticated, fetchProfile]);
 
 
   return (

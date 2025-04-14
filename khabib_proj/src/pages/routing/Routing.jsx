@@ -4,8 +4,8 @@ import {Route, Routes} from 'react-router-dom'
 import {Layout} from "./Layout.jsx";
 import {Paths} from "../../constants/routesPaths.js";
 import CreatePost from "@/components/Posts/CreatePost.jsx";
-import Login from "@pages/Auth/Login.jsx";
 import SignIn from "@pages/Auth/SignIn.jsx";
+import SignUp from '../Auth/SignUp.jsx';
 
 
 
@@ -17,7 +17,7 @@ const routesList = [
     {key: 'main', path: Paths.MainPage, Page: MainPage},
     {key: 'posts', path: Paths.Posts, Page: Posts},
     {key: 'createPost', path: Paths.CreatePost, Page: CreatePost},
-    {key: 'login', path: Paths.Login, Page: Login},
+    {key: 'signUp', path: Paths.SignUp, Page: SignUp},
     {key:'signIn', path: Paths.SignIn, Page: SignIn},
 ]
 

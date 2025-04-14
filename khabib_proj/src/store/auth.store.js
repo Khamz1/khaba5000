@@ -9,11 +9,18 @@ export const useAuthStore = create((set) => ({
     error:null,
 
     login: async (email, password) => {
+        set({ isLoading: true });
         try {
             const { user, token } = await AuthAPI.login(email, password);
             localStorage.setItem('token', token);
-            set({ user, token, isAuthenticated: true });
+            set({ 
+                user, 
+                token, 
+                isAuthenticated: true,
+                isLoading: false 
+            });
         } catch (error) {
+            set({ isLoading: false });
             throw new Error(error.response?.data?.error || 'Ошибка входа');
         }
     },
@@ -41,9 +48,21 @@ export const useAuthStore = create((set) => ({
             const user = await AuthAPI.getMe();
             set({ user });
         } catch (error) {
-            console.error(error);
             localStorage.removeItem('token');
-            set({ user: null, token: null, isAuthenticated: false });
+            set({ 
+                user: null, 
+                token: null, 
+                isAuthenticated: false 
+            });
+            throw error; // Пробрасываем ошибку для обработки в компонентах
         }
-    }
+    },
+    logout: () => {
+        localStorage.removeItem('token');
+        set({ 
+          user: null, 
+          token: null, 
+          isAuthenticated: false 
+        });
+      }
 }));

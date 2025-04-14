@@ -7,12 +7,15 @@ export const AuthAPI = {
     },
 
     login: async (email, password) => {
-        const response = await api.post('/user/login', { email, password });
+        const response = await api.post('/user/login', {
+            email,
+            password
+        });
         return response.data;
     },
 
-    // getMe: async () => {
-    //     const response = await api.get('/user/me'); // Добавьте этот эндпоинт на бэкенде
-    //     return response.data;
-    // }
+    getMe: async () => {
+        const response = await api.get('/me'); // Добавьте этот эндпоинт на бэкенде
+        return response.data;
+    }
 };

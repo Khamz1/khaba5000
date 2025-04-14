@@ -1,7 +1,8 @@
+
 export const Paths = {
     MainPage:'/',
     Profile:'/profile',
-    Login:'/login',
+    SignUp:'/signUp',
     SignIn:'/signIn',
     Posts:'/posts',
     CreatePost:'/createPost',

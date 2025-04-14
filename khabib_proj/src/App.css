@@ -1,12 +1,18 @@
+/* @import './fonts/style.css'; */
+
 #root {
   margin: 0;
   padding: 0;
   text-align: center;
+ 
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: #E4E0E1;
 }
+
+
 
 

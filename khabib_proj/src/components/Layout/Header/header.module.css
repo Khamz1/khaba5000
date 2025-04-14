@@ -12,3 +12,7 @@
     top: 0;
     width: 100%;
 }
+.hButtons{
+    display: flex;
+    gap: 10px;
+}
