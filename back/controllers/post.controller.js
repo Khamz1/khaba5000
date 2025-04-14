@@ -2,18 +2,18 @@ const Post = require('../models/Post.model');
 
 module.exports.postController = {
     createPost: async (req, res) => {
-        const { title, text} = req.body;
-        const author = req.user.userId
+        const { title, text, userId } = req.body;
+        // const author = req.user.userId
 
         if (!title || !text) {
             return res.status(400).json({ error: 'Не заполнены обязательные поля' });
         }
         try {
-            const post = new Post({ title, text, author, date: new Date().now().toLocaleString() });
+            const post = new Post({ title, text, author: userId, date: new Date()});
             await post.save();
             res.status(201).json(post);
         } catch (err) {
-            res.status(500).json({ error: 'Ошибка при создании поста', details: err.message });
+            res.status(500).json({ error: err.message, details: err.message });
         }
     },
 

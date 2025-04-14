@@ -97,4 +97,51 @@ module.exports.userController = {
             res.status(500).json({ error: 'Ошибка при обновлении пользователя', details: err.message });
         }
     },
+    current: async (req, res) => {
+        try {
+            const user = await prisma.user.findUnique({
+                where: { id: req.user.userId },
+                include: {
+                    followers: {
+                        include: {
+                            follower: true
+                        }
+                    },
+                    following: {
+                        include: {
+                            following: true
+                        }
+                    }
+                }
+            });
+
+            if (!user) {
+                return res.status(400).json({ error: "Не удалось найти пользователя" });
+            }
+
+            return res.status(200).json(user)
+        } catch (error) {
+            console.log('err', error)
+            res.status(500).json({ error: "Что-то пошло не так" });
+        }
+    },
+    getMe: async (req, res) => {
+        try {
+          // req.user содержит данные пользователя из JWT токена
+          const user = await User.findById(req.user.userId)
+            .select('-password') // Исключаем пароль из ответа
+            .lean(); // Преобразуем в обычный объект
+    
+          if (!user) {
+            return res.status(404).json({ error: 'Пользователь не найден' });
+          }
+    
+          res.json(user);
+        } catch (err) {
+          res.status(500).json({ 
+            error: 'Ошибка при получении профиля',
+            details: err.message 
+          });
+        }
+      },
 };

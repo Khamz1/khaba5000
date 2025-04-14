@@ -8,9 +8,9 @@ const authUser = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, 'secret-key'); // Замените на ваш секретный ключ
-        req.user = decoded; // Добавляем данные пользователя в объект запроса
-        next(); // Передаем управление следующему middleware или контроллеру
+        const decoded = jwt.verify(token, 'secret-key'); 
+        req.user = decoded;
+        next();
     } catch (err) {
         res.status(401).json({ error: 'Неверный токен. Авторизация требуется.' });
     }
