@@ -10,7 +10,6 @@ export const SignUpForm = ({
     handleSubmit,
     loading,
     error
-    
 }) => {
     const { name, lastName, email, password } = formData;
 

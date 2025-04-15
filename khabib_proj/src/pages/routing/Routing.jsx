@@ -3,15 +3,20 @@ import {lazy, Suspense} from 'react'
 import {Route, Routes} from 'react-router-dom'
 import {Layout} from "./Layout.jsx";
 import {Paths} from "../../constants/routesPaths.js";
-import CreatePost from "@/components/Posts/CreatePost.jsx";
-import SignIn from "@pages/Auth/SignIn.jsx";
-import SignUp from '../Auth/SignUp.jsx';
+// import CreatePost from "@/components/Posts/CreatePost.jsx";
+// import SignIn from "@pages/Auth/SignIn.jsx";
+// import SignUp from '../Auth/SignUp.jsx';
+
 
 
 
 
 const Posts = lazy(() => import('@/components/Posts/PostList.jsx'))
 const MainPage = lazy(() => import('@/pages/Main/Main.jsx'))
+const CreatePost = lazy(()=>import('@/components/Posts/CreatePost.jsx'))
+const SignUp = lazy(()=>import('../Auth/SignUp.jsx'))
+const SignIn = lazy(()=>import('../Auth/SignIn.jsx'))
+const PostDetail = lazy(()=>import('../../components/Posts/PostDetails.jsx'))
 
 const routesList = [
     {key: 'main', path: Paths.MainPage, Page: MainPage},
@@ -19,6 +24,7 @@ const routesList = [
     {key: 'createPost', path: Paths.CreatePost, Page: CreatePost},
     {key: 'signUp', path: Paths.SignUp, Page: SignUp},
     {key:'signIn', path: Paths.SignIn, Page: SignIn},
+    {key:`post`,path:Paths.PostById,Page:PostDetail }
 ]
 
 export const Routing = ()=>{

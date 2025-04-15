@@ -20,7 +20,7 @@ function Header() {
   return (
     <header className={HStyle.header}>
       <Container className={HStyle.main}>
-        <Button onClick={() => navigate(`${Paths.CreatePost}`)}>Создать новый пост</Button>
+       {isAuthenticated?<Button onClick={() => navigate(`${Paths.CreatePost}`)}>Создать новый пост</Button>:null}
         <LogoIcon fill="red" />
         <div className={HStyle.hButtons}>
         {isAuthenticated ? <Button onClick={handleLogout}>Выйти из аккаунта</Button> : <Button onClick={() => navigate('signIn')}>Войти в аккаунт</Button>}

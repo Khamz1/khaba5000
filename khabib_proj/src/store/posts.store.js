@@ -28,6 +28,7 @@ export const usePostsStore = create((set) => ({
             throw error;
         }
     },
+  
 
     createPost: async (postData) => {
         set({ loading: true, error:null});
