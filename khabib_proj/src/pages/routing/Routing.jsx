@@ -8,9 +8,6 @@ import {Paths} from "../../constants/routesPaths.js";
 // import SignUp from '../Auth/SignUp.jsx';
 
 
-
-
-
 const Posts = lazy(() => import('@/components/Posts/PostList.jsx'))
 const MainPage = lazy(() => import('@/pages/Main/Main.jsx'))
 const CreatePost = lazy(()=>import('@/components/Posts/CreatePost.jsx'))
@@ -24,7 +21,7 @@ const routesList = [
     {key: 'createPost', path: Paths.CreatePost, Page: CreatePost},
     {key: 'signUp', path: Paths.SignUp, Page: SignUp},
     {key:'signIn', path: Paths.SignIn, Page: SignIn},
-    {key:`post`,path:Paths.PostById,Page:PostDetail }
+    {key:`posts/:id`,path:Paths.PostById,Page:PostDetail }
 ]
 
 export const Routing = ()=>{

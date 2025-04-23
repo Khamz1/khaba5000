@@ -19,6 +19,7 @@ export const usePostsStore = create((set) => ({
     },
 
     fetchPostById: async (id) => {
+        
         set({ loading: true });
         try {
             const post = await PostsAPI.getPostById(id);

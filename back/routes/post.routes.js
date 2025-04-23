@@ -8,7 +8,7 @@ const router = Router()
 router.post('/post',authUser, postController.createPost);
 router.get('/post',postController.getPost)
 router.get('/post/:id',postController.getPostById)
-router.delete('/post/:id',authMiddleware(['admin']),postController.deletePost)
+router.delete('/post/:id',authUser,postController.deletePost)
 
 
 module.exports = router

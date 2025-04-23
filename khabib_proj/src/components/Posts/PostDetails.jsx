@@ -1,25 +1,31 @@
 import { useParams } from 'react-router-dom';
 import { usePostsStore } from '../../store/posts.store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import H2 from '../Ui/Headers/H2'
+import S from './detail.module.css'
+import {Container} from '../Ui/Container/Container'
 
  const PostDetail = () => {
   const { id } = useParams();
-  const { getPostById } = usePostsStore();
+  const { fetchPostById, currentPost, loading } = usePostsStore();
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    getPostById(id).then(setPost);
-  }, [id, getPostById]);
+    fetchPostById(id).then(setPost);
+  }, [id, fetchPostById]);
+  console.log(post,"Its Post")
 
-  if (!post) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
 
-  return (
-    <div className="post-detail">
-      <h1>{post.title}</h1>
-      <p>{post.text}</p>
-      {/* Остальные детали поста */}
+  return  currentPost? ( 
+    <Container className={S.container}>
+    <div className={S.PostDetail}>
+      <H2 className={S.h2Detail}>{currentPost.title}</H2>
+      <p className={S.text}>{currentPost.text}</p>
     </div>
-  );
+    </Container>
+  ):
+  "Такого поста у нас нет(";
 };
 
 export default PostDetail;

@@ -4,10 +4,11 @@ form{
   align-items: center;
   justify-content: center;
   padding: 20px;
+  
 }
 
 .signInForm{
-  background-color: #AB886D;
+  background-color: #077A7D;
   border-radius: 20px;
   width: 50%;
   display: flex;
@@ -15,6 +16,9 @@ form{
   align-items: center;
   gap: 20px;
   padding: 20px;
+  -webkit-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
+-moz-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
+box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
   }
 
   .container{

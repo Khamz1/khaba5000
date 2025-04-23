@@ -7,11 +7,14 @@
 }
 
 .header {
-    background-color: #D6C0B3;
-    position: sticky;
+    background-color: #6fbcb9;
     top: 0;
     width: 100%;
     text-align: center;
+    -webkit-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
+  -moz-box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
+  box-shadow: 0px 0px 22px -4px rgba(0, 0, 0, 0.95);
+  position: relative;
 }
 
 .hButtons {
@@ -20,7 +23,13 @@
     justify-self: end;
 }
 
-/* Для первой кнопки */
+
 .main > button:first-child {
     justify-self: start;
+}
+
+.deleteButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }

@@ -1,0 +1,14 @@
+
+.h2Detail{
+    font-size: 40px;
+    margin: 10;
+    padding: 0;
+    
+}
+
+.text{
+    overflow: hidden;
+    word-break: break-all;
+    font-size: 20px;
+    color:#06202B;
+}

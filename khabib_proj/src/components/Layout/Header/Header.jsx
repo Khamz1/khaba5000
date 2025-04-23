@@ -21,7 +21,8 @@ function Header() {
     <header className={HStyle.header}>
       <Container className={HStyle.main}>
        {isAuthenticated?<Button onClick={() => navigate(`${Paths.CreatePost}`)}>Создать новый пост</Button>:null}
-        <LogoIcon fill="red" />
+       <button onClick={()=>navigate('/posts')} className={HStyle.deleteButton}><LogoIcon fill="red" /></button>
+        
         <div className={HStyle.hButtons}>
         {isAuthenticated ? <Button onClick={handleLogout}>Выйти из аккаунта</Button> : <Button onClick={() => navigate('signIn')}>Войти в аккаунт</Button>}
         {isAuthenticated ? null : <Button onClick={() => navigate('signUp')}>Регистрация</Button>}

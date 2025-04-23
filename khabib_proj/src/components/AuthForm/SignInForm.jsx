@@ -20,7 +20,7 @@ export const SignInForm = ({
     <div>
       <Container className={s.container}>
         <H2>
-          Если вы зарегестрировались, <br /> войдите в свой аккаунт
+          Если вы зарегестрировались, <br /> войдите в свой аккаунт!
         </H2>
         <form onSubmit={handleSubmit}>
           <div className={s.signInForm}>
