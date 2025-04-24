@@ -3,19 +3,27 @@ const Post = require('../models/Post.model');
 module.exports.postController = {
     createPost: async (req, res) => {
         const { title, text, userId } = req.body;
-        // const author = req.user.userId
-
+        const image = req.file?.filename; // multer сохраняет имя файла
+      
         if (!title || !text) {
-            return res.status(400).json({ error: 'Не заполнены обязательные поля' });
+          return res.status(400).json({ error: 'Не заполнены обязательные поля' });
         }
+      
         try {
-            const post = new Post({ title, text, author: userId, date: new Date()});
-            await post.save();
-            res.status(201).json(post);
+          const post = new Post({
+            title,
+            text,
+            author: userId,
+            date: new Date(),
+            image: image ? `/uploads/${image}` : null, // сохраняем путь
+          });
+      
+          await post.save();
+          res.status(201).json(post);
         } catch (err) {
-            res.status(500).json({ error: err.message, details: err.message });
+          res.status(500).json({ error: err.message });
         }
-    },
+      },
 
     getPost: async (req, res) => {
         try {
