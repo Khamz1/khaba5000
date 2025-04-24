@@ -6,5 +6,6 @@ export const Paths = {
     SignIn:'/signIn',
     Posts:'/posts',
     CreatePost:'/createPost',
-    PostById:`/posts/:id`
+    PostById:`/posts/:id`,
+    Like:'/likes/:id'
 }

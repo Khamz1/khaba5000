@@ -20,5 +20,7 @@ export const PostsAPI = {
         await api.delete(`/post/${id}`, {
             data: { userId, userRole } // Отправка дополнительных данных для проверки прав
         });
-    }
+    },
+    toggleLike: (postId) => api.post(`/api/likes/${postId}`),
 };
+

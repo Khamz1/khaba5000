@@ -16,12 +16,9 @@ const PostList = () => {
 
   return (
     <Container className={s.PostList}>
-      {posts.map((post) => (
-        <PostCard
-          key={post._id} // Используем уникальный ID поста
-          post={post}
-        />
-      ))}
+    {posts.map(post =>
+  post?._id ? <PostCard key={post._id} post={post} /> : null
+)}
 
     </Container>
   );

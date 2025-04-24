@@ -11,6 +11,7 @@ const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const { createPost, loading } = usePostsStore();
+    const [image, setImage] = useState(null);
     const { user } = useAuthStore();
     const validatePost = (title, text) => {
         if (title.length < 0) return "Пост без заголовка?"
@@ -21,58 +22,73 @@ const CreatePost = () => {
     const decodedJwt = jwtDecode(localStorage.getItem("token"))
 
 
-    const handleSubmit = async (e) => {
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          setImage(file);
+        }
+      };
+    
+      const handleSubmit = async (e) => {
         e.preventDefault();
         if (!user) return;
-        const validationError = validatePost(title, text)
+        const validationError = validatePost(title, text);
         if (validationError) {
-            alert(validationError)
-            return;
+          alert(validationError);
+          return;
         }
-
+    
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("text", text);
+        formData.append("userId", decodedJwt.userId);
+        if (image) {
+          formData.append("image", image);  
+        }
+    
         try {
-            await createPost({ title, text, userId: decodedJwt.userId });
-            navigate('/posts')
-            setTitle('');
-            setText('');
-            alert('Пост успешно создан)')
-
+          await createPost(formData);  
+          navigate('/posts');
+          setTitle('');
+          setText('');
+          setImage(null);  
+          alert('Пост успешно создан!');
         } catch (error) {
-            alert(error.response?.data?.error || 'Ошибка при создании поста');
+          alert(error.response?.data?.error || 'Ошибка при создании поста');
+        } finally {
+          setIsSubmitting(false);
         }
-        finally {
-            setIsSubmitting(false)
-        }
-    };
+      };
 
-    return (
-
+      return (
         <Container className={S.containerCenter}>
-
-
-            <div className={S.createPost}>
-                <h2>О чем будет ваш новый пост?</h2>
-                <form className={S.createForm} onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Заголовок"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                    <textarea
-                        placeholder="Текст поста"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                        required
-                    />
-                    <Button type="submit">
-                        Опубликовать
-                    </Button>
-                </form>
-            </div>
+          <div className={S.createPost}>
+            <h2>О чем будет ваш новый пост?</h2>
+            <form className={S.createForm} onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Заголовок"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+              <textarea
+                placeholder="Текст поста"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                required
+              />
+              <input
+                type="file"
+                onChange={handleImageChange}
+              />
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Публикуется...' : 'Опубликовать'}
+              </Button>
+            </form>
+          </div>
         </Container>
-    );
-};
-
-export default CreatePost;
+      );
+    };
+    
+    export default CreatePost;

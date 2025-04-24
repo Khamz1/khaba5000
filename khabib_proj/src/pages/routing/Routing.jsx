@@ -14,6 +14,7 @@ const CreatePost = lazy(()=>import('@/components/Posts/CreatePost.jsx'))
 const SignUp = lazy(()=>import('../Auth/SignUp.jsx'))
 const SignIn = lazy(()=>import('../Auth/SignIn.jsx'))
 const PostDetail = lazy(()=>import('../../components/Posts/PostDetails.jsx'))
+const Like = lazy(()=>('../../components/likes/LikeButton.jsx'))
 
 const routesList = [
     {key: 'main', path: Paths.MainPage, Page: MainPage},
