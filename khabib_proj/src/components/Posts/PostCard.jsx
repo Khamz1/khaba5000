@@ -31,7 +31,7 @@ const PostCard = ({ post }) => {
       <h3 className={s.title}>{post.title}</h3>
       <p className={s.text}>{post.text} </p>
       {post.image && (
-  <img src={`http://localhost:3030${post.image}`} alt="Превью поста" style={{ maxWidth: '100%' }} />
+  <img className={s.image} src={`http://localhost:3030${post.image}`} alt="Превью поста" style={{ maxWidth: '100%' }} />
 )}
 
       <div className={s.info}>
