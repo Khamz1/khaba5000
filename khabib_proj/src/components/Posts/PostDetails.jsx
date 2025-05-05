@@ -21,7 +21,13 @@ import {Container} from '../Ui/Container/Container'
     <Container className={S.container}>
     <div className={S.PostDetail}>
       <H2 className={S.h2Detail}>{currentPost.title}</H2>
-      <img src={`http://localhost:3030${currentPost.image}`} alt="" />
+        <span className={S.image}> {currentPost.image && (
+                  <img
+                    src={`http://localhost:3030${currentPost.image}`}
+                    alt="Превью поста"
+                  />
+                )}
+                </span>
       <p className={S.text}>{currentPost.text}</p>
     </div>
     </Container>
